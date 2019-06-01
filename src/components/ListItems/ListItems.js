@@ -1,10 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 
 const listItems = (props) => (
-    <View style={styles.listItems}>
-        <Text>{props.placeName}</Text>
-    </View>
+    <TouchableOpacity onPress={props.onItemPressed}>
+        <View style={styles.listItems}>
+            <Image resizeMode="cover" source={props.placeImage} style={styles.placeImage}/>
+            <Text>{props.placeName}</Text>
+        </View>
+    </TouchableOpacity>
 )
 
 const styles = StyleSheet.create({
@@ -12,7 +15,14 @@ const styles = StyleSheet.create({
         width: "100%",
         backgroundColor: "#eee",
         padding: 10,
-        marginBottom: 5
+        marginBottom: 5,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    placeImage: {
+        marginRight: 8,
+        height: 30,
+        width: 30
     }
 })
 
